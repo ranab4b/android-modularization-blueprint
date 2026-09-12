@@ -38,23 +38,39 @@ android {
 }
 
 dependencies {
-    // app is the composition root: it wires every core and feature module together
-    // and assembles the nav graph, but contains no business logic of its own.
-    implementation(project(":core:core-common"))
-    implementation(project(":core:core-ui"))
-    implementation(project(":core:core-network"))
-    implementation(project(":core:core-database"))
-    implementation(project(":feature:feature-home"))
-    implementation(project(":feature:feature-detail"))
-    implementation(project(":feature:feature-settings"))
-
+    // Single-module baseline: every dependency the app needs lives in this one
+    // build.gradle.kts, with no api/implementation module boundary to enforce -
+    // that's the whole point of comparing this branch's build times against main.
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.material.icons.extended)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
+    implementation(libs.kotlinx.coroutines.core)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+    implementation(libs.retrofit.core)
+    implementation(libs.okhttp.core)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.logging.interceptor)
+
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

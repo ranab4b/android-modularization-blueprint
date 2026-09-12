@@ -21,10 +21,3 @@ dependencyResolutionManagement {
 rootProject.name = "android-modularization-blueprint"
 
 include(":app")
-include(":core:core-common")
-include(":core:core-ui")
-include(":core:core-network")
-include(":core:core-database")
-include(":feature:feature-home")
-include(":feature:feature-detail")
-include(":feature:feature-settings")
