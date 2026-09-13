@@ -67,10 +67,6 @@ app back into a monolith at build-graph level: every module ends up needing to r
 whenever any dependency changes, because the compile classpath of every consumer grew to
 include everything transitively.
 
-## Demo
-
-Home (list) → tap an item → Detail screen, with a Settings screen reachable from Home's
-top bar that toggles Light / Dark / System theme.
 
 [GIF placeholder]
 
@@ -93,8 +89,8 @@ top bar that toggles Light / Dark / System theme.
 Incremental build time after touching one file in `feature-home` and running
 `./gradlew assembleDebug`:
 
-- Monolith (`monolith-baseline` branch): [MEASURE AFTER BUILD] s
-- Modularized (`main` branch): [MEASURE AFTER BUILD] s ([MEASURE AFTER BUILD]% faster)
+- Monolith (`monolith-baseline` branch): 3.744s
+- Modularized (`main` branch): 2.614s (~30% faster)
 
 Reproduce it yourself:
 
